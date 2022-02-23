@@ -1,0 +1,212 @@
+{
+  "elements": [
+    {
+      "type": "Title",
+      "id": 1,
+      "position": 0,
+      "attributes": {
+        "text": "Taster note",
+        "title_range": 1
+      }
+    },
+    {
+      "type": "TextForm",
+      "id": 10,
+      "position": 1,
+      "attributes": {
+        "text": "Type your age, in years",
+        "text_field_range": 2,
+        "keyboard_type": "Digit"
+      }
+    },
+    {
+      "type": "CheckBox",
+      "id": 11,
+      "position": 2,
+      "is_hidden": {
+        "condition": "isLess",
+        "id_element": 10
+      },
+      "attributes": {
+        "text": "Choose drink type",
+        "title_range": 2,
+        "multiply_choise_allowed": false,
+        "buttons": [
+          {
+            "id": 22,
+            "title": "tee"
+          },
+          {
+            "id": 23,
+            "title": "cofee"
+          }
+        ]
+      }
+    },
+    {
+      "type": "CheckBox",
+      "id": 2,
+      "position": 3,
+      "is_hidden": {
+        "condition": "isGreaterOrEqual",
+        "id_element": 10
+      },
+      "attributes": {
+        "text": "Choose drink type",
+        "title_range": 2,
+        "multiply_choise_allowed": false,
+        "buttons": [
+          {
+            "id": 20,
+            "title": "beer"
+          },
+          {
+            "id": 21,
+            "title": "wine"
+          },
+          {
+            "id": 22,
+            "title": "tee"
+          },
+          {
+            "id": 23,
+            "title": "cofee"
+          }
+        ]
+      }
+    },
+    {
+      "type": "TextForm",
+      "id": 3,
+      "position": 4,
+      "is_hidden": {
+        "condition": "isEqual",
+        "id_element": 20
+      },
+      "attributes": {
+        "text": "Enter temperature of beer and  serving conditions",
+        "text_field_range": 50
+      }
+    },
+    {
+      "type": "MultilineText",
+      "id": 4,
+      "position": 100,
+      "is_hidden": {
+        "condition": "isEqual",
+        "id_element": 20
+      },
+      "attributes": {
+        "text": "Describe the taste",
+        "text_field_range": 500
+      }
+    },
+    {
+      "type": "TextForm",
+      "id": 5,
+      "position": 5,
+      "is_hidden": {
+        "condition": "isEqual",
+        "id_element": 21
+      },
+      "attributes": {
+        "text": "Enter wine vintage, temperature and  serving conditions",
+        "text_field_range": 50
+      }
+    },
+    {
+      "type": "CheckBox",
+      "id": 6,
+      "position": 6,
+      "is_hidden": {
+        "condition": "isEqual",
+        "id_element": 22
+      },
+      "attributes": {
+        "text": "Choose type of tee",
+        "title_range": 2,
+        "multiply_choise_allowed": false,
+        "buttons": [
+          {
+            "id": 60,
+            "title": "black"
+          },
+          {
+            "id": 61,
+            "title": "green"
+          },
+          {
+            "id": 62,
+            "title": "herbal"
+          },
+          {
+            "id": 63,
+            "title": "other"
+          }
+        ]
+      }
+    },
+    {
+      "type": "TextForm",
+      "id": 7,
+      "position": 7,
+      "is_hidden": {
+        "condition": "isEqual",
+        "id_element": 63
+      },
+      "attributes": {
+        "text": "What type of tee you tasted, describe please",
+        "text_field_range": 50
+      }
+    },
+    {
+      "type": "TextForm",
+      "id": 8,
+      "position": 8,
+      "is_hidden": {
+        "condition": "isEqual",
+        "id_element": 22
+      },
+      "attributes": {
+        "text": "Serving conditions",
+        "text_field_range": 50
+      }
+    },
+    {
+      "type": "CheckBox",
+      "id": 9,
+      "position": 9,
+      "is_hidden": {
+        "condition": "isEqual",
+        "id_element": 23
+      },
+      "attributes": {
+        "text": "Choose type of taste additions",
+        "title_range": 2,
+        "multiply_choise_allowed": true,
+        "buttons": [
+          {
+            "id": 90,
+            "title": "sugar"
+          },
+          {
+            "id": 91,
+            "title": "milk"
+          },
+          {
+            "id": 92,
+            "title": "cream"
+          },
+          {
+            "id": 93,
+            "title": "ice cream"
+          },
+          {
+            "id": 94,
+            "title": "cinnamon"
+          }
+        ]
+      }
+    }
+  ]
+}
