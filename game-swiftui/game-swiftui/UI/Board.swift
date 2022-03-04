@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct Board: View {
-    var matrix: Matrix
+    @ObservedObject var matrix: Matrix
     var addedTile: (Int, Int)? = nil
     
     private func wasAdded(row: Int, column: Int) -> Bool {

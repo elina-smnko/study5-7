@@ -9,29 +9,28 @@ import SwiftUI
 import UIKit
 
 struct ContentView: View {
-    @ObservedObject var matrix = Matrix()
+    var matrix = Matrix()
     
     var body: some View {
-        Board(matrix: matrix).gesture(DragGesture(minimumDistance: 20, coordinateSpace: .global)
+        Board(matrix: matrix).onTapGesture {
+            matrix.move(.down)
+        }
+            .gesture(DragGesture(minimumDistance: 20, coordinateSpace: .global)
                                         .onEnded { value in
                                             let horizontalAmount = value.translation.width as CGFloat
                                             let verticalAmount = value.translation.height as CGFloat
-                                            
+
                                             if abs(horizontalAmount) > abs(verticalAmount) {
                                                 if horizontalAmount < 0 {
-                                                    print("left")
-                                                    matrix.move(.left)
+                                                    self.matrix.move(.left)
                                                 } else {
-                                                    print("right")
-                                                    matrix.move(.right)
+                                                    self.matrix.move(.right)
                                                 }
                                             } else {
                                                 if verticalAmount < 0 {
-                                                    print("up")
-                                                    matrix.move(.up)
+                                                    self.matrix.move(.up)
                                                 } else {
-                                                    print("down")
-                                                    matrix.move(.down)
+                                                    self.matrix.move(.down)
                                                 }
                                             }
                                         })
