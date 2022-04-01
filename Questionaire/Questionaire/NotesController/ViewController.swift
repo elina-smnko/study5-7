@@ -11,8 +11,6 @@ class ViewController: UIViewController {
     let viewModel: NotesViewModel
     private let formTableView = UITableView()
     private let submitButton = UIButton()
-    private let stopLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 200, height: 150))
-    private var disabled: Bool = false
     
     init(viewModel: NotesViewModel) {
         self.viewModel = viewModel
@@ -27,41 +25,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         setupUI()
         setupTableView()
-        DispatchQueue.main.async { [weak self] in
-            self?.showAlert()
-        }
     }
-    
-    private func showAlert() {
-        let alert = UIAlertController(title: "Hello!", message: "Enter your age", preferredStyle: .alert)
-        alert.addTextField()
-
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { [weak self] (_) in
-            let textField = alert.textFields?[0]
-            if let age = Int(textField?.text ?? ""), age < 18 {
-                self?.disabled = true
-                self?.disableForm()
-            }
-        }))
-        self.present(alert, animated: true, completion: nil)
-    }
-    
-    private func disableForm() {
-        formTableView.isHidden = true
-        stopLabel.text = "You should be 18 to enter"
-        view.addSubview(stopLabel)
-        stopLabel.font = .systemFont(ofSize: 20)
-        stopLabel.textColor = .black
-        stopLabel.numberOfLines = 0
-        stopLabel.center = view.center
-        stopLabel.textAlignment = .center
-    }
-    
-    private func enableForm() {
-        formTableView.isHidden = false
-        stopLabel.removeFromSuperview()
-    }
-    
     
     private func setupTableView() {
         view.addSubview(formTableView)
@@ -94,7 +58,7 @@ class ViewController: UIViewController {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.elements.count
+        return NotesViewModel.shownElements.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -103,21 +67,18 @@ class ViewController: UIViewController {
         }
         cell.selectionStyle = .none
         cell.width = tableView.frame.width
-        cell.element = viewModel.elements[indexPath.row]
+        cell.element = NotesViewModel.shownElements[indexPath.row]
         return cell
     }
     
     @objc
     func submitForm() {
-        if disabled {
-            disabled.toggle()
-            enableForm()
-        }
-        viewModel.elements.forEach({ element in
-            for b in (element.attributes?.buttons ?? [Button]()){
-                print(b.title!+" "+String(describing: b.isSelected))
-            }
-        })
+//        viewModel.elements.forEach({ element in
+//            for b in (element.attributes?.buttons ?? [Button]()){
+//                print(b.title!+" "+String(describing: b.isSelected))
+//            }
+//        })
+        formTableView.reloadData()
     }
 }
 

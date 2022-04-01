@@ -123,11 +123,21 @@ class ElementTableViewCell: UITableViewCell {
 
 extension ElementTableViewCell: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        let maxLength = textField.tag
+        guard let max = element?.attributes?.textFieldRange else { return false }
+        let maxLength = max
         let currentString: NSString = (textField.text ?? "") as NSString
         let newString: NSString =
                 currentString.replacingCharacters(in: range, with: string) as NSString
         return newString.length <= maxLength
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField, reason: UITextField.DidEndEditingReason) {
+        guard let text = textField.text else { return }
+        if let value = Int(text) {
+            if element?.id == 10 {
+                NotesViewModel.updateAge(value: value)
+            }
+        }
     }
 }
 

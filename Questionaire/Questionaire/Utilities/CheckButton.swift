@@ -36,6 +36,7 @@ class CheckButton: UIButton {
             buttonInfo?.isSelected?.toggle()
             if buttonInfo?.isSelected == true {
                 self.layer.backgroundColor = UIColor.purple.cgColor
+                NotesViewModel.selectElement(id: buttonInfo?.id ?? -1)
             } else {
                 self.layer.backgroundColor = UIColor.purple.withAlphaComponent(0.5).cgColor
             }

@@ -57,22 +57,22 @@ class Element: Codable {
     let hidden: Hidden?
     let attributes: Attribute?
     
-    var isHidden: Bool {
-        guard let id = id else {return true}
-        guard let hidden = hidden, let condition = HiddenCondition(rawValue: hidden.condition) else { return false }
-        switch condition {
-        case .less:
-            return id < hidden.idElem
-        case .greater:
-            return id > hidden.idElem
-        case .greaterEqual:
-            return id >= hidden.idElem
-        case .lessEqual:
-            return id <= hidden.idElem
-        case .equal:
-            return id == hidden.idElem
-        }
-    }
+//    var isHidden: Bool {
+//        guard let id = id else {return true}
+//        guard let hidden = hidden, let condition = HiddenCondition(rawValue: hidden.condition) else { return false }
+//        switch condition {
+//        case .less:
+//            return id < hidden.idElem
+//        case .greater:
+//            return id > hidden.idElem
+//        case .greaterEqual:
+//            return id >= hidden.idElem
+//        case .lessEqual:
+//            return id <= hidden.idElem
+//        case .equal:
+//            return id == hidden.idElem
+//        }
+//    }
     
     
     enum CodingKeys: String, CodingKey {
